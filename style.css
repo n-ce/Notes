@@ -1,0 +1,71 @@
+:root {
+	--bg: #FAFAFA;
+	--text: black;
+	--btn_bg: #bdbdbd;
+	--btn_text: #000a;
+	--search_bg: #eee;
+	--list_bg:#e0e0e0
+}
+
+@media(prefers-color-scheme:dark) {
+	:root {
+		--bg: #212121;
+		--text: white;
+		--btn_bg: #757575;
+		--btn_text: #fff;
+		--search_bg: #424242;
+		--list_bg:#616161
+	}
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--bg);
+	color: var(--text);
+}
+
+#add_button {
+	position: fixed;
+	bottom: 0;
+	right: 5vmin;
+	bottom: 5vmin;
+	height: 15vmin;
+	width:15vmin;
+	font-size: 10vmin;
+	font-weight: bold;
+	border-radius: 5vmin;
+	background-color: var(--btn_bg);
+	color: var(--btn_text);
+	border: none;
+}
+
+input[type="search"] {
+	position: fixed;
+	top:0;
+	margin: 5vmin;
+	width: calc(100% - 10vmin);
+	height: 15vmin;
+	background-color:var(--search_bg);
+	color: var(--search-text);
+	border-radius: 10vmin;
+	border: none;
+	font-size: 5vmin;
+	font-weight: bold;
+	padding: 0 10vmin;
+}
+
+ul {
+	padding: 0 5vmin;
+	list-style-type: none;
+	overflow: scroll;
+	margin-top: 20vmin;
+}
+
+li {
+	height: 20vmin;
+	margin-top: 5vmin;
+	border-radius: 5vmin;
+	background-color: var(--list_bg)
+}
