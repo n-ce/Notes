@@ -75,11 +75,9 @@ li {
 	font-style: italic;
 }
 
-.hide{
-	display:none;
-}
 
-div{
+
+#page{
 	position:absolute;
 	top:0;
 	left:0;
@@ -88,7 +86,7 @@ div{
 	width:calc(100% - 10vmin);
 	background-color: var(--bg);
 	padding:5vmin;
-	display:flex;
+	display:none;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
@@ -97,12 +95,12 @@ div{
 #pageTitle{
 	font-size:10vmin;
 	font-weight:bold;
-	height:10%;
+	height:100%;
 	margin:0;
 	padding: 0;
 	background: none;
 	border:none;
-	width: 95%;
+	width: 100%;
 }
 #pageText{
 	height:85%;
@@ -110,4 +108,18 @@ div{
 	border:none;
 	padding:1vmin;
 	background: none;
+}
+#page div{
+	display:flex;
+	align-items: center;
+	height: 10%;
+	width: 100%;
+}
+#close_button{
+	border:none;
+	background: none;
+	font-size:15vmin;
+	font-weight:bold;
+	color:var(--btn_text);
+	margin-right:5vmin;
 }
