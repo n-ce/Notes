@@ -37,7 +37,7 @@ function heading(string) {
 	heading.id = 'pageTitle';
 	heading.addEventListener('input', e => {
 		if (e.data === ',') {
-			heading.value = heading.value.replace(',', '');
+			heading.value = heading.value.slice(0, heading.value.length - 1);
 			alert('comma not allowed.')
 			return;
 		}
@@ -60,7 +60,7 @@ function heading(string) {
 }
 
 function openNote(title) {
-	if (page.style.display==='flex') {
+	if (page.style.display === 'flex') {
 		close_button.click();
 		return;
 	}

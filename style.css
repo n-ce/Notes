@@ -44,12 +44,8 @@ body {
 	align-items:center;
 }
 
-#add_button:active{
-	transform: scale(0)
-}
 #add_button:hover{
-	transform: rotate(360deg);
-	border-radius: 50%;
+	transform: scale(0.9);
 }
 
 input[type="search"] {
@@ -93,6 +89,10 @@ li:hover{
 a{
 	text-decoration: none;
 	color:inherit;
+	user-select: none;
+}
+li a {
+	pointer-events: none;
 }
 
 #page{
