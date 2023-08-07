@@ -94,3 +94,13 @@ for (const note of noteList)
 add_button.addEventListener('click', () => {
 	openNote();
 });
+
+
+search.addEventListener('keyup', () => {
+	for (const i of list.children){
+		i.style.display =
+		i.textContent.toLowerCase()
+		.includes(search.value.toLowerCase()) ?
+		'list-item' : 'none';
+	}
+})
