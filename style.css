@@ -51,6 +51,7 @@ body {
 input[type="search"] {
 	position: fixed;
 	top: 0;
+	z-index:2;
 	margin: 5vmin;
 	width: calc(100% - 10vmin);
 	height: 10vmin;
@@ -96,10 +97,9 @@ li a {
 }
 
 #page{
-	position:absolute;
+	position:fixed;
 	top:0;
-	left:0;
-	z-index:2;
+	z-index:3;
 	height:calc(100% - 10vmin);
 	width:calc(100% - 10vmin);
 	background-color: var(--bg);
