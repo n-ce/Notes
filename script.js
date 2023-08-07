@@ -20,10 +20,9 @@ function closeBtn() {
 	closeBtn.textContent = '<';
 	closeBtn.id = 'close_button';
 	closeBtn.addEventListener('click', () => {
-		if (!pageTitle.value) {
-			alert('Note title can\'t be empty.');
-			return;
-		}
+		if (!pageTitle.value && pageText.value)
+			if (!confirm('Your note won\'t be saved without a title. Continue?'))
+				return;
 		page.style.display = 'none';
 		page.innerHTML = '';
 		currentNote = '';
@@ -61,6 +60,10 @@ function heading(string) {
 }
 
 function openNote(title) {
+	if (page.style.display==='flex') {
+		close_button.click();
+		return;
+	}
 	currentNote = title;
 	page.style.display = 'flex';
 	const body = document.createElement('textarea');
@@ -77,13 +80,25 @@ function openNote(title) {
 }
 
 
+function route(path) {
+	history.pushState({}, '', new URL(path, location.origin));
+	openNote(path);
+}
+
 function newNote(title) {
 	const li = document.createElement('li');
-	li.textContent = title;
 	li.id = title;
+	const anchor = document.createElement('a');
+	anchor.href = "/" + title;
+	anchor.textContent = title;
+	anchor.addEventListener('click', e => {
+		e.preventDefault();
+		route(e.target.textContent)
+	});
 	li.addEventListener('click', () => {
-		openNote(title);
-	})
+		anchor.click();
+	});
+	li.appendChild(anchor);
 	document.querySelector('ul').appendChild(li)
 }
 
@@ -91,16 +106,20 @@ for (const note of noteList)
 	newNote(note);
 
 
-add_button.addEventListener('click', () => {
-	openNote();
-});
 
+add_button.addEventListener('click', (e) => {
+	e.preventDefault();
+	history.pushState({}, '', location.origin);
+	openNote();
+})
 
 search.addEventListener('keyup', () => {
-	for (const i of list.children){
+	for (const i of list.children) {
 		i.style.display =
-		i.textContent.toLowerCase()
-		.includes(search.value.toLowerCase()) ?
-		'list-item' : 'none';
+			i.textContent.toLowerCase()
+			.includes(search.value.toLowerCase()) ?
+			'list-item' : 'none';
 	}
 })
+
+addEventListener('popstate', _ => openNote(location.pathname.substring(1)))

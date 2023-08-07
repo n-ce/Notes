@@ -37,9 +37,19 @@ body {
 	border-radius: 5vmin;
 	background-color: var(--btn_bg);
 	color: var(--btn_text);
-	border: none;
 	box-shadow: 1px 1px 2px 1px #0002;
-	
+	transition: all 0.5s;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+#add_button:active{
+	transform: scale(0)
+}
+#add_button:hover{
+	transform: rotate(360deg);
+	border-radius: 50%;
 }
 
 input[type="search"] {
@@ -73,9 +83,17 @@ li {
 	font-size: 5vmin;
 	font-weight: bold;
 	font-style: italic;
+	transition: all 0.2s ease-in-out;
+	user-select:none;
 }
 
-
+li:hover{
+	transform: scale(0.95)
+}
+a{
+	text-decoration: none;
+	color:inherit;
+}
 
 #page{
 	position:absolute;
@@ -85,11 +103,20 @@ li {
 	height:calc(100% - 10vmin);
 	width:calc(100% - 10vmin);
 	background-color: var(--bg);
+	color:var(--text);
 	padding:5vmin;
 	display:none;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	animation:appear 0.5s ease-in-out;
+}
+
+@keyframes appear{
+	from{
+		transform: translateX(100%);
+	}
+	
 }
 
 #pageTitle{
@@ -101,6 +128,8 @@ li {
 	background: none;
 	border:none;
 	width: 100%;
+	color:inherit;
+	outline:none;
 }
 #pageText{
 	height:85%;
@@ -108,6 +137,8 @@ li {
 	border:none;
 	padding:1vmin;
 	background: none;
+	color:inherit;
+	outline:none;
 }
 #page div{
 	display:flex;
@@ -123,3 +154,4 @@ li {
 	color:var(--btn_text);
 	margin-right:5vmin;
 }
+
