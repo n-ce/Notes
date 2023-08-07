@@ -11,8 +11,10 @@ const savedNotes = localStorage.getItem('notes');
 const noteList = savedNotes ?
 	savedNotes.split(',') : [];
 
-
 let currentNote = '';
+
+// important for gh pages
+const mainRoute = location.href;
 
 
 function closeBtn() {
@@ -80,10 +82,6 @@ function openNote(title) {
 }
 
 
-function route(path) {
-	history.pushState({}, '', new URL(path, location.origin));
-	openNote(path);
-}
 
 function newNote(title) {
 	const li = document.createElement('li');
@@ -93,7 +91,8 @@ function newNote(title) {
 	anchor.textContent = title;
 	anchor.addEventListener('click', e => {
 		e.preventDefault();
-		route(e.target.textContent)
+		history.pushState({}, '', new URL(e.target.textContent, mainRoute));
+		openNote(e.target.textContent)
 	});
 	li.addEventListener('click', () => {
 		anchor.click();
@@ -109,7 +108,7 @@ for (const note of noteList)
 
 add_button.addEventListener('click', (e) => {
 	e.preventDefault();
-	history.pushState({}, '', location.origin);
+	history.pushState({}, '', mainRoute);
 	openNote();
 })
 
